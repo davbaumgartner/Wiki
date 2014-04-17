@@ -40,7 +40,8 @@ module Wiki.Sessions (UserSession(..),
   generateSessionPath ::
                          String 
                       -> String 
-  generateSessionPath = (++) "/tmp/"
+  generateSessionPath 
+    = (++) "/tmp/"
 
   -- |Empty session
   emptySession ::
