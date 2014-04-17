@@ -25,7 +25,9 @@ module Wiki.Langs.English where
        ("save changes", "Save changes"),
        ("your request has been successfully threated",
         "Your request has been successfully threated."),
-       ("check your inputs", "Check your inputs.")]
+       ("check your inputs", "Check your inputs."),
+       ("not found", "Not found"),
+       ("file not found", "File not found.")]
 
   -- |Translater
   translate :: 

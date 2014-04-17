@@ -25,7 +25,9 @@ module Wiki.Langs.French where
        ("save changes", "Enregistrer les modifications"),
        ("your request has been successfully threated",
         "Vôtre requête a été traitée avec succès."),
-       ("check your inputs", "Vérifiez vos entrées.")]
+       ("check your inputs", "Vérifiez vos entrées."),
+       ("not found", "Introuvable"),
+       ("file not found", "Le fichier n'a pas pu être trouvé")]
 
   -- |Translater
   translate :: 
