@@ -107,21 +107,21 @@ module Wiki.Templates (PageTemplate(..),
                                ! A.class_ "icon-user" 
                                $ _empty
                              _tr "User"
-                             H.ul 
-                               $ do H.li 
-                                      $ H.a 
-                                          ! A.href "/user/settings" 
-                                          $ do H.i 
-                                                 ! A.class_ "icon-cog" 
-                                                 $ _empty
-                                               _tr "Settings"
-                                    H.li 
-                                      $ H.a 
-                                          ! A.href "/user/signout" 
-                                          $ do H.i 
-                                                 ! A.class_ "icon-signout" 
-                                                 $ _empty
-                                               _tr "Sign out"
+                      H.ul 
+                        $ do H.li 
+                               $ H.a 
+                                   ! A.href "/user/settings" 
+                                   $ do H.i 
+                                          ! A.class_ "icon-cog" 
+                                          $ _empty
+                                        _tr "Settings"
+                             H.li 
+                                $ H.a 
+                                    ! A.href "/user/signout" 
+                                    $ do H.i 
+                                           ! A.class_ "icon-signout" 
+                                           $ _empty
+                                         _tr "Sign out"
                menuAdd
 
   -- |Returns a page using the default configuration
