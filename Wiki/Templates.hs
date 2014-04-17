@@ -77,7 +77,7 @@ module Wiki.Templates (PageTemplate(..),
 
   defaultMenu :: 
                  Translater 
-              -> H.Html
+              -> H.Html    
               -> H.Html
   defaultMenu translater menuAdd
     = let 
@@ -111,6 +111,7 @@ module Wiki.Templates (PageTemplate(..),
                                                  ! A.class_ "icon-signout" 
                                                  $ _empty
                                                _tr "Sign out"
+               menuAdd
 
   mkPage :: 
             Translater 
