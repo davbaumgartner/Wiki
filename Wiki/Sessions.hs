@@ -36,6 +36,12 @@ module Wiki.Sessions (UserSession(..),
                     userId   :: Maybe String }
                     deriving (Show, Read)
 
+  -- |Generates the path to the session
+  generateSessionPath ::
+                         String 
+                      -> String 
+  generateSessionPath = (++) "/tmp/"
+
   -- |Empty session
   emptySession ::
                   UserSession
@@ -48,7 +54,7 @@ module Wiki.Sessions (UserSession(..),
                   SessionId -> UserSession -> m ()
   writeSession session_id session
     = liftIO 
-        $ writeFile ("/tmp/" ++ session_id) $ show session
+        $ writeFile (generateSessionPath session_id) $ show session
 
   -- |Reads datas for a session
   readSession :: (Control.Monad.IO.Class.MonadIO m) =>
@@ -56,7 +62,7 @@ module Wiki.Sessions (UserSession(..),
               -> m UserSession
   readSession session_id
     = let
-        f_path = "/tmp/" ++ session_id
+        f_path = generateSessionPath session_id
       in
         liftIO
           $ doesFileExist f_path 
@@ -64,7 +70,7 @@ module Wiki.Sessions (UserSession(..),
               if
                 exists 
               then 
-                read <$> readFile ("/tmp/" ++ session_id) 
+                read <$> readFile f_path
               else
                 return emptySession
 
