@@ -108,7 +108,7 @@ module Wiki.Views (routes) where
                                ! A.class_ "notice error" 
                                $ H.i 
                                    ! A.class_ "icon-remove-sign icon-large" 
-                                   $ _text translater "Check your inputs"
+                                   $ _tr "Check your inputs"
                              settingsForm translater)
                          _empty
 
@@ -121,7 +121,7 @@ module Wiki.Views (routes) where
           notFound 
             $ T.mkAnswer translater "Not found"
                 (H.p 
-                   $ _text translater "File not found")
+                   $ _tr "File not found")
                 _empty
 
   -- |Routes that have to be served
