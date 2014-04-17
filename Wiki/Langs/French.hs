@@ -1,7 +1,16 @@
+{-|
+Module      : Wiki.Langs.French
+Description : Provide translations in french
+Copyright   : (c) David Baumgartner, 2014
+License     : BSD3
+Maintainer  : ch.davidbaumgartner@gmail.com
+Stability   : stable
+-}
 module Wiki.Langs.French where
 
   import           Wiki.Translation
 
+  -- |Translation table
   translation ::
                  Source
   translation
@@ -18,6 +27,7 @@ module Wiki.Langs.French where
         "Vôtre requête a été traitée avec succès."),
        ("check your inputs", "Vérifiez vos entrées.")]
 
+  -- |Translater
   translate :: 
                Identifier 
             -> Translation

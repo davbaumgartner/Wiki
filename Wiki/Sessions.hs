@@ -1,4 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-|
+Module      : Wiki.Sessions
+Description : User sessions
+Copyright   : (c) David Baumgartner, 2014
+License     : BSD3
+Maintainer  : ch.davidbaumgartner@gmail.com
+Stability   : stable
+-}
 module Wiki.Sessions (UserSession(..),
                       SessionId,
                       emptySession,
@@ -19,8 +27,10 @@ module Wiki.Sessions (UserSession(..),
   import           Wiki.Utils
   import           Wiki.Translation
 
+  -- |Identifier for sessions (UUID)
   type SessionId
     = String
+  -- |Session content description
   data UserSession
     = UserSession{  userLang :: String,
                     userId   :: Maybe String }

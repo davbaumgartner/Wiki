@@ -1,3 +1,11 @@
+{-|
+Module      : Wiki.Utils
+Description : Some utilitaries used everywhere
+Copyright   : (c) David Baumgartner, 2014
+License     : BSD3
+Maintainer  : ch.davidbaumgartner@gmail.com
+Stability   : stable
+-}
 module Wiki.Utils (_text,
                    _empty,
                    _method,
@@ -42,8 +50,8 @@ module Wiki.Utils (_text,
 
   -- |List of all supported translaters
   translaters ::
-                 [(   String,         -- ^ Identifier
-                      Identifier      -- ^ Translater
+                 [(   String,  
+                      Identifier    
                    -> Translation)]
   translaters
     = [("fr", Tr_F.translate),

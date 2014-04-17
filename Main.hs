@@ -1,4 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-|
+Module      : Main
+Description : Runner for the Wiki
+Copyright   : (c) David Baumgartner, 2014
+License     : BSD3
+Maintainer  : ch.davidbaumgartner@gmail.com
+Stability   : stable
+-}
 module Main (main) where
   
   import           Control.Monad (msum, mzero)

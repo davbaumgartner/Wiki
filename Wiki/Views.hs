@@ -1,4 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-|
+Module      : Wiki.Views
+Description : All the views and router
+Copyright   : (c) David Baumgartner, 2014
+License     : BSD3
+Maintainer  : ch.davidbaumgartner@gmail.com
+Stability   : stable
+-}
 module Wiki.Views (routes) where
 
   import           Control.Monad (msum)

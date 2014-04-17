@@ -1,7 +1,16 @@
+{-|
+Module      : Wiki.Langs.French
+Description : Provide translations in english
+Copyright   : (c) David Baumgartner, 2014
+License     : BSD3
+Maintainer  : ch.davidbaumgartner@gmail.com
+Stability   : stable
+-}
 module Wiki.Langs.English where
 
   import           Wiki.Translation
 
+  -- |Translation table
   translation ::
                  Source
   translation
@@ -18,6 +27,7 @@ module Wiki.Langs.English where
         "Your request has been successfully threated."),
        ("check your inputs", "Check your inputs.")]
 
+  -- |Translater
   translate :: 
                Identifier 
             -> Translation

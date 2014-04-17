@@ -1,4 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-|
+Module      : Wiki.Templates
+Description : Base and default templates for Wiki
+Copyright   : (c) David Baumgartner, 2014
+License     : BSD3
+Maintainer  : ch.davidbaumgartner@gmail.com
+Stability   : stable
+-}
 module Wiki.Templates (PageTemplate(..),
                        appTemplate,
                        defaultMenu,
@@ -12,6 +20,7 @@ module Wiki.Templates (PageTemplate(..),
   import           Wiki.Translation
   import           Wiki.Utils
 
+  -- |Datas to send to template
   data PageTemplate 
     = PageTemplate{  title   :: String,
                      sideBar :: Maybe H.Html, 
