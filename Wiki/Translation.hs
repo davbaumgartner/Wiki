@@ -14,6 +14,7 @@ module Wiki.Translation (Identifier,
   type Source      = [(Identifier, Translation)]
   type Translater  = (String -> String)
 
+  -- |Base structure for a translater
   translate' :: 
                 Source 
              -> Identifier 
@@ -21,6 +22,7 @@ module Wiki.Translation (Identifier,
   translate' s i
     = fromMaybe i (lookup (map toLower i) s)
 
+  -- |Blank translater: used when none is found
   noTranslation :: 
                    Translater
   noTranslation 

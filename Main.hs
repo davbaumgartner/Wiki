@@ -10,6 +10,7 @@ module Main (main) where
                                       setLevel, 
                                       Priority(..))
 
+  -- |List of the routes that have to be served by Happstack
   routes :: 
             ServerPart Response
   routes
@@ -17,6 +18,7 @@ module Main (main) where
         $ dir "assets" (serveDirectory DisableBrowsing [] "./assets") :
             V.routes
 
+  -- |Runner
   main :: 
           IO ()
   main

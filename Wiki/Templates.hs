@@ -18,6 +18,7 @@ module Wiki.Templates (PageTemplate(..),
                      menu    :: H.Html, 
                      contentBody :: H.Html }
 
+  -- |Basic template
   appTemplate :: 
                  Translater 
               -> PageTemplate 
@@ -75,9 +76,10 @@ module Wiki.Templates (PageTemplate(..),
                                            ! A.id "content" 
                                            $ contentBody page
 
+  -- |The default menu
   defaultMenu :: 
                  Translater 
-              -> H.Html    
+              -> H.Html       -- ^ The items to add 
               -> H.Html
   defaultMenu translater menuAdd
     = let 
@@ -113,6 +115,7 @@ module Wiki.Templates (PageTemplate(..),
                                                _tr "Sign out"
                menuAdd
 
+  -- |Returns a page using the default configuration
   mkPage :: 
             Translater 
          -> String 
@@ -125,6 +128,7 @@ module Wiki.Templates (PageTemplate(..),
                                             menu = defaultMenu translater menuAdd,
                                             contentBody = body }
 
+  -- |Prepares an answer using 'mkPage'
   mkAnswer ::
              Translater 
           -> String 

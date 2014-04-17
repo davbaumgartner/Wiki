@@ -26,18 +26,21 @@ module Wiki.Sessions (UserSession(..),
                     userId   :: Maybe String }
                     deriving (Show, Read)
 
+  -- |Empty session
   emptySession ::
                   UserSession
   emptySession
     = UserSession{  userLang  = "en", 
                     userId    = Nothing }
 
+  -- |Writes data into a session (not working yet)
   writeSession :: (Control.Monad.IO.Class.MonadIO m) =>
                   SessionId -> UserSession -> m ()
   writeSession session_id session
     = liftIO 
         $ writeFile ("/tmp/" ++ session_id) $ show session
 
+  -- |Reads datas for a session
   readSession :: (Control.Monad.IO.Class.MonadIO m) =>
                  SessionId 
               -> m UserSession
@@ -55,6 +58,7 @@ module Wiki.Sessions (UserSession(..),
               else
                 return emptySession
 
+  -- |Used by views: setups main things (more than sessions btw), creates a new session if not exists.
   withSession ::
                  (   (SessionId,
                       UserSession,
