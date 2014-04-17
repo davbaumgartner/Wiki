@@ -86,7 +86,7 @@ module Wiki.Views (routes) where
               look "lang"
           >>= \lang ->
               if
-                lang `elem` (map fst translaters) 
+                lang `elem` map fst translaters
               then
                    writeSession sid (session{userLang = lang})
                 >> let 
