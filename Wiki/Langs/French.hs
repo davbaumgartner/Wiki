@@ -20,7 +20,7 @@ module Wiki.Langs.French where
        ("sign out", "Déconnexion"),
        ("select language", "Sélectionnez la langue"),
        ("language", "Langue"), 
-       ("french", "Françis"),
+       ("french", "Français"),
        ("english", "Anglais (english)"),
        ("save changes", "Enregistrer les modifications"),
        ("your request has been successfully threated",
