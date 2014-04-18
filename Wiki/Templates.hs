@@ -100,6 +100,7 @@ module Wiki.Templates (PageTemplate(..),
                  $ H.a 
                      ! A.href "/" 
                      $ _tr "Home"
+               menuAdd
                H.li 
                  $ do H.a 
                         ! A.href "" 
@@ -122,7 +123,6 @@ module Wiki.Templates (PageTemplate(..),
                                            ! A.class_ "icon-signout" 
                                            $ _empty
                                          _tr "Sign out"
-               menuAdd
 
   -- |Returns a page using the default configuration
   mkPage :: 
