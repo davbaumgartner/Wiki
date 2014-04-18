@@ -40,7 +40,7 @@ module Wiki.Utils (_text,
   _method :: (Control.Monad.MonadPlus m,
               MatchMethod method, 
               ServerMonad m) =>
-             method 
+             method
           -> m b -- ^ The method(s) that have to be supported
           -> m b
   _method m h 

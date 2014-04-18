@@ -15,7 +15,7 @@ module Wiki.Sessions (UserSession(..),
                       withSession) where
 
   import           Prelude
-  import           Control.Applicative ((<$>))
+  import           Control.Applicative ((<$>), (<*))
   import           Control.Monad.IO.Class (liftIO, MonadIO)
   import           Happstack.Server
   import           Happstack.Server.Cookie
@@ -24,6 +24,8 @@ module Wiki.Sessions (UserSession(..),
   import           Data.UUID (toString)
   import           Data.UUID.V4
   import           System.Directory
+  import           Database.HDBC
+  import           Database.HDBC.Sqlite3
   import           Wiki.Utils
   import           Wiki.Translation
 
@@ -54,26 +56,34 @@ module Wiki.Sessions (UserSession(..),
   writeSession :: (Control.Monad.IO.Class.MonadIO m) =>
                   SessionId -> UserSession -> m ()
   writeSession session_id session
-    = liftIO 
-        $ writeFile (generateSessionPath session_id) $ show session
+    = let
+        f_path = generateSessionPath session_id
+      in
+        liftIO 
+          $     connectSqlite3 "private/sessions.db"
+          >>= \db ->
+                   run db "REPLACE INTO sessions (sid, sdatas) VALUES (?, ?)" [toSql session_id, toSql $ show session]
+                >> commit db
+                >> disconnect db
+                >> return ()
 
   -- |Reads datas for a session
   readSession :: (Control.Monad.IO.Class.MonadIO m) =>
                  SessionId 
               -> m UserSession
   readSession session_id
-    = let
-        f_path = generateSessionPath session_id
-      in
-        liftIO
-          $ doesFileExist f_path 
-            >>= \exists ->
-              if
-                exists 
-              then 
-                read <$> readFile f_path
-              else
-                return emptySession
+    = liftIO
+        $     connectSqlite3 "private/sessions.db" 
+          >>= \db ->
+                    quickQuery' db "SELECT sdatas FROM sessions WHERE sid = ? LIMIT 1" [toSql session_id] <* disconnect db
+                >>= \datas ->
+                      if
+                        length datas > 0
+                      then
+                        return $ read (fromSql $ head $ head $ datas)
+                      else
+                           writeSession session_id emptySession
+                        >> return emptySession
 
   -- |Used by views: setups main things (more than sessions btw), creates a new session if not exists.
   withSession ::
